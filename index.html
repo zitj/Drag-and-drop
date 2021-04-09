@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.css" />
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
         <title>Drag and drop</title>
     </head>
     <body>
@@ -13,7 +13,7 @@
             <div class="colon">
                 <header><h2>Important list</h2></header>
                 <ul>
-                    <li class="item" id="i1">
+                    <li class="item" id="i1" draggable="true">
                         <p>Important item</p>
                         <button id="deleteBtn">
                             <svg
@@ -54,7 +54,7 @@
                             </svg>
                         </button>
                     </li>
-                    <li class="item" id="i2">
+                    <li class="item" id="i2" draggable="true">
                         <p>Unimportant item</p>
                         <button id="deleteBtn">
                             <svg
