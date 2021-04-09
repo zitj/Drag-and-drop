@@ -53,14 +53,16 @@ li p {
     margin: 0;
     padding: 3%;
 }
-#deleteBtn {
+.deleteBtn {
     background: rgb(255, 81, 115);
     border: none;
     border-radius: 4px;
     padding: 2% 3% 0;
     color: rgb(246, 246, 246);
+    outline: none;
 }
-#deleteBtn:hover {
+
+.deleteBtn:hover {
     cursor: pointer;
     opacity: 0.9;
 }
@@ -69,5 +71,5 @@ li:hover {
 }
 li:active {
     cursor: grabbing;
-    transform: rotate(2deg);
+    /* transform: rotate(2deg) scale(1.02); */
 }
