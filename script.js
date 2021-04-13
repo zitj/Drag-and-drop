@@ -22,11 +22,17 @@ items.forEach((el) => {
     el.addEventListener('mouseup', (event) => {
         event.currentTarget.style.transform = 'rotate(0deg) scale(1)';
     });
-    el.addEventListener('dragstart', (event) => {
-        el.classList.add('dragging');
-    });
-    el.addEventListener('dragend', (event) => {
-        el.classList.remove('dragging');
+    lists.forEach((list) => {
+        el.addEventListener('dragstart', (event) => {
+            el.classList.add('dragging');
+        });
+        el.addEventListener('dragend', (event) => {
+            el.classList.remove('dragging');
+            list.style.background = 'white';
+            if (list.className == 'overdragged') {
+                list.appendChild(el);
+            }
+        });
     });
 });
 
@@ -34,10 +40,12 @@ lists.forEach((list) => {
     list.addEventListener('dragover', (e) => {
         e.preventDefault();
         const draggable = document.querySelector('.dragging');
-
+        list.classList.add('overdragged');
         list.style.background = 'rgb(244, 244, 244)';
+        // list.appendChild(draggable);
     });
-    list.addEventListener('dragexit ', (e) => {
+    list.addEventListener('dragleave', (e) => {
+        list.classList.remove('overdragged');
         list.style.background = 'white';
     });
 });
