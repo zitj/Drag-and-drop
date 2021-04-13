@@ -1,4 +1,3 @@
-console.log('We are connected!');
 const lists = document.querySelectorAll('ul');
 const items = document.querySelectorAll('.item');
 const colons = document.querySelectorAll('.colon');
@@ -37,12 +36,13 @@ items.forEach((el) => {
 });
 
 lists.forEach((list) => {
+    list.addEventListener('dragstart', (e) => {
+        list.style.background = 'rgb(250, 250, 250)';
+    });
     list.addEventListener('dragover', (e) => {
         e.preventDefault();
-        const draggable = document.querySelector('.dragging');
         list.classList.add('overdragged');
-        list.style.background = 'rgb(244, 244, 244)';
-        // list.appendChild(draggable);
+        list.style.background = 'rgb(250, 250, 250)';
     });
     list.addEventListener('dragleave', (e) => {
         list.classList.remove('overdragged');
@@ -50,41 +50,27 @@ lists.forEach((list) => {
     });
 });
 
-// document.addEventListener(
-//     'dragover',
-//     function (event) {
-//         event.preventDefault();
-//     },
-//     false
-// );
-// document.addEventListener(
-//     'dragenter',
-//     function (event) {
-//         if (event.target.className == 'colon') {
-//             event.target.style.background = 'purple';
-//         }
-//     },
-//     false
-// );
-// document.addEventListener(
-//     'dragleave',
-//     function (event) {
-//         // reset background of potential drop target when the draggable element leaves it
-//         if (event.target.className == 'colon') {
-//             event.target.style.background = '';
-//         }
-//     },
-//     false
-// );
 document.addEventListener('dragend', function (event) {
     event.target;
     event.target.style.transform = 'rotate(0deg) scale(1)';
 });
 
-buttons.forEach((el) =>
-    el.addEventListener('click', (e) => {
+buttons.forEach((button) =>
+    button.addEventListener('click', (e) => {
+        let greatGrandparent = button.parentElement.parentElement.parentElement;
         items.forEach((item) => {
             item.style.transform = 'rotate(0deg) scale(1)';
         });
+
+        if (greatGrandparent.className !== 'deletedItems') {
+            document
+                .querySelector('.deletedItems')
+                .children[1].appendChild(button.parentElement);
+        }
+        if (greatGrandparent.classList.contains('deletedItems')) {
+            document
+                .querySelector('.importantList')
+                .children[1].appendChild(button.parentElement);
+        }
     })
 );
