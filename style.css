@@ -86,3 +86,16 @@ li:active {
     background: rgb(255, 255, 255);
     /* transform: rotate(2deg) scale(1.02); */
 }
+
+.colon .deleteBtn .recycle {
+    display: none;
+}
+.colon .deleteBtn .remove {
+    display: inline;
+}
+.colon.deletedItems .deleteBtn .recycle {
+    display: inline;
+}
+.colon.deletedItems .deleteBtn .remove {
+    display: none;
+}
